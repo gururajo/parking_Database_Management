@@ -44,7 +44,7 @@ if(isset($_SESSION['userName']))
   ?>
 
   <button type="submit" name="Submit">Log In</button><br>
-        <!-- <p class="links"> <a  href="signUp.php">New User ? Click Here To Register</a>  </p> <br> -->
+         <p class="links"> <a  href="signUp.php">New User ? Click Here To Register</a>  </p> <br> 
 
       </form>
 

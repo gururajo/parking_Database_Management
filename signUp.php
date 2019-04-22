@@ -13,9 +13,7 @@ if(isset($_SESSION['userName']))
      <meta charset="utf-8">
      <title>Sign Up</title>
       <link rel="stylesheet" href="styles.css">
-      <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" >
-
+      
    </head>
     <body>
       <script type="text/javascript" src="js/main.js"> </script>

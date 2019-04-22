@@ -23,7 +23,7 @@ require 'dbConnect.php';
 
 if(!empty($fName)&&!empty($mName)&&!empty($lName)&&!empty($email)&&!empty($password)&&!empty($confirmPasss))
 {
-  $stmt = $conn->prepare("INSERT INTO users (first_name, middle_name, last_name, ph_no, e-mail, password) VALUES (?, ?, ? , ? , ? , ?)");
+  $stmt = $conn->prepare("INSERT INTO users (first_name, middle_name, last_name, ph_no, email, password) VALUES (?, ?, ? , ? , ? , ?)");
   $stmt->bind_param("sssssi", $fName, $mName, $lName, $mobile, $email ,$password);
   if($stmt->execute())
   {
@@ -60,10 +60,7 @@ else {
    if($isWritten)
     {
         echo "<h2 >Your Account is Created successfully</h2>";
-        echo '<a href="myStore.php">Continue Shopping</a>';
-        session_start();
-        $_SESSION["userName"] = $fName;
-        $_SESSION["userMail"] = $email;
+        header("Location: authSucess.php?user=$fName&useremail=$email");
     }else {
       echo "<h2 class='error'>Something went wrong please try later</h2>";
       echo '<a href="mystore.php">Take me to Home </a>';
@@ -72,10 +69,7 @@ else {
     if($errorcode<0)
     {
       echo "<h2 >Creating Your Account Please Wait </h2>";
-      echo '<div class="load-bar">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar">';
+     
     }
 
      ?>
