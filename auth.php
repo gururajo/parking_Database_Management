@@ -3,10 +3,10 @@
 
     $conn = getConnection();
 
-   /* if($conn->connect_error)
+    if($conn->connect_error)
     {
       header("Location: signUp.php?status=&failed" );
-    }*/
+    }
 
     $password=$_POST['password'];
     $email=$_POST['email'];
@@ -14,7 +14,7 @@
     
     $sql = "SELECT * from users where email='$email'";
     $result = $conn->query($sql);
-    echo $result->num_rows;
+   // echo $result->num_rows;
 
    
     if ($result->num_rows > 0) {

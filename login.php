@@ -7,7 +7,7 @@ if(isset($_SESSION['userName']))
   {
     session_destroy();
   }else {
-  header("Location: myStore.php");
+  header("Location: hello.php");
   }
 
   }

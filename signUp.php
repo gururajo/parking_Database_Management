@@ -2,9 +2,15 @@
 <?php
 if(isset($_SESSION['userName']))
 {
-  header("Location: myStore.php");
+  header("Location: hello.php");
 
   }
+  if(isset($_GET['status']))
+  {
+    header("Location:login.php");
+  
+    }
+    
  ?>
 
  <!DOCTYPE html>
