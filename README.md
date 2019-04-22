@@ -4,6 +4,6 @@
 
 
 
-add above files in sever with php
-add some databse reqired to it
+add above files in any server with php
+add some database and some entities required to it which you can understand when you are through the code
 open login.php or signup.php to start 
