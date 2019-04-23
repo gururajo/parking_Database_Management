@@ -11,10 +11,16 @@
 
 <h1>parking management</h1>
 
-          <?php
+           <?php
                 session_start();
-              echo "<h3 class='links' > Signed In as ".$_SESSION['userName'].'<a href="login.php?logout=1">Log Out</a></h3>';
-          ?>
+                if(isset($_SESSION['username']))
+              echo "<h3 class='links' > Signed In as ".$_SESSION['username'].'<a href="login.php?logout=1">Log Out</a></h3>';
+              else
+              {
+                echo "not logged in, please log in!!!!<br> <a href=\"login.php\">login</a>";
+                die();
+              }
+          ?> 
           <h3>customer  details</h3>
          <form  action="custdetails.php" name="searchForm" method="get">
            <input type="text" name="ph_no" value="" placeholder="mobile number" required>
@@ -53,7 +59,7 @@ if($isgot==1)
 }
 else
 {
-  echo '<a href="main.php">Go to Home</a>';
+  echo '<h2>No customers<h2><br><a href="main.php">Go to Home</a>';
 }
 ?>
 

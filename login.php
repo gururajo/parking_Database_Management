@@ -1,13 +1,16 @@
 
 
 <?php
-if(isset($_SESSION['userName']))
+
+session_start();
+if(isset($_SESSION['username']))
 {
+  //echo 'in session';
   if(isset($_GET['logout']))
   {
+   // echo 'in get';
     session_destroy();
-  }else {
-  header("Location: hello.php");
+    session_abort();
   }
 
   }
@@ -44,7 +47,7 @@ if(isset($_SESSION['userName']))
   ?>
 
   <button type="submit" name="Submit">Log In</button><br>
-         <p class="links"> <a  href="signUp.php">New User ? Click Here To Register</a>  </p> <br> 
+        
 
       </form>
 

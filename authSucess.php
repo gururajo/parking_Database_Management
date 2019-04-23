@@ -1,8 +1,8 @@
 <?php
  session_start();
- $_SESSION['userName']=$_GET['user'];
- $_SESSION['userEmail']=$_GET['useremail'];
+ $_SESSION['username']=$_GET['user'];
+ $_SESSION['useremail']=$_GET['useremail'];
 
- header("Location: hello.php")
+ header("Location: main.php")
 
  ?>
