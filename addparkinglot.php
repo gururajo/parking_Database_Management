@@ -53,12 +53,12 @@ if(!empty($opname)&&!empty($nofloors)&&!empty($noblocks)&&!empty($zip)&&!empty($
 {
     if(empty($valet))
     {
-        $stmt = $conn->prepare("INSERT INTO parking_lots (operating_company_name, no_of_floors, no_of_blocks, zip, address) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO parking_lotss (operating_company_name, no_of_floors, no_of_blocks, zip, address) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("siiis",$opname,$nofloors,$noblocks,$zip,$address);
     }
     else
     {
-        $stmt = $conn->prepare("INSERT INTO parking_lots (operating_company_name, no_of_floors, no_of_blocks, zip, address,is_valet_parking_available) VALUES (?, ?, ?, ?, ?,?)");
+        $stmt = $conn->prepare("INSERT INTO parking_lotss (operating_company_name, no_of_floors, no_of_blocks, zip, address,is_valet_parking_available) VALUES (?, ?, ?, ?, ?,?)");
         $stmt->bind_param("siiiss",$opname,$nofloors,$noblocks,$zip,$address,$valet);
     }
   if($stmt->execute())

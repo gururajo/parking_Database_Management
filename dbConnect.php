@@ -2,7 +2,7 @@
 
 // Create connection
 function getConnection() {
-  $servername = "localhost";
+  $servername = "127.0.0.1:3308";
   $username = "root";
   $password = "";
   $database="parking_management";

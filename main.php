@@ -6,7 +6,7 @@
         </title>
     </head>
     <body>
-    <?php
+            <?php
                 session_start();
                // echo("hello  ".$_SESSION['username']);
                 if(isset($_SESSION['username']))
@@ -18,8 +18,10 @@
         <table>
         <h3><tr><a href="addcustomer.php">add customer</a></tr><br>
         <tr><a href="custdetails.php">customer details</a></tr><br>
+        <tr><a href="removecustomer.php">remove customer </a></tr><br>
         <tr><a href="addparkinglot.php">add parking lot</a></tr><br>
         <tr><a href="newcarparked.php">new car parked?</a></tr><br>
+        <tr><a href="createreceipt.php">car location</a></tr><br>
         <tr><a href="createreceipt.php">create receipt?</a></tr><br>
         </h3>
         <br><br><br><br><br>

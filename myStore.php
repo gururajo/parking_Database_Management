@@ -13,9 +13,9 @@
 
       <div class="card">
         <?php
-                session_start();
+               /* session_start();
               echo "<h3 class='links' > Signed In as ".$_SESSION['userName'].'<a href="login.php?logout=1">Log Out</a></h3>';
-          ?>
+          */?>
          <form  class="searchForm" action="myStore.php" name="searchForm" method="get">
            <input type="text" name="keyword" value="" placeholder="Search My Store" required>
                      <button type="submit">Search</button>

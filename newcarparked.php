@@ -19,7 +19,7 @@
 Mobile Phone  <input type="text" name="mobile"  required ><br>
        <button type="submit" name="Submit">Add?</button><br><br><br><br>
        <a href="addcustomer.php">new customer?</a><br>
-       <a href="main.php">Go To Home?</a><br>
+       
 </form>
 
 <?php
@@ -82,7 +82,7 @@ require 'dbConnect.php';
             if($ismaxparkedgot==1)
             {
                 echo("in ismaxparkedgot");
-               $sql2 = "select min(lot_id),no_of_floors,no_of_blocks from parking_lots;" ;
+               $sql2 = "select min(lot_id),no_of_floors,no_of_blocks from parking_lotss;" ;
                $result2 = $conn->query($sql2);
                if ($result2->num_rows > 0)
                 {

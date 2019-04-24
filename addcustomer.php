@@ -19,7 +19,7 @@
 
 
         customer Name  <input type="text" name="Name" value="" required><br>
-        Mobile Phone  <input type="number" name="mobile" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required ><br>
+        Mobile Phone  <input type="text" name="mobile"  required ><br>
        vehicle  <input type="text" name="vehicle_no" value="" placeholder="example-ka291234" required><br>
        Is regular?<input type="text" name="isregular" value="" placeholder="yes/no"><br>
        <button type="submit" name="Submit">Add customer</button><br><br><br><br>
@@ -52,7 +52,8 @@ require 'dbConnect.php';
 if(!empty($Name)&&!empty($ph_no)&&!empty($vehicle_no))
 {
   $stmt = $conn->prepare("INSERT INTO customer (name,contact_no,vehicle_no,is_regular_cust) VALUES (?, ?, ?, ?)");
-  $stmt->bind_param("siss", $Name, $ph_no, $vehicle_no, $isregular);
+  $stmt->bind_param("ssss", $Name, $ph_no, $vehicle_no, $isregular);
+  //echo $Name.$ph_no.$vehicle_no.$isregular;
   if($stmt->execute())
   {
        $isWritten=true;
@@ -71,12 +72,7 @@ echo "No input";
   }
   
 
-?>
 
-
-
-
-   <?php
 if($_POST)
 {
    if($isWritten)
