@@ -12,6 +12,10 @@ if(isset($_SESSION['username']))
     session_destroy();
     session_abort();
   }
+  else
+  {
+    header("Location: main.php");
+  }
 
   }
  ?>

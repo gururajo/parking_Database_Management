@@ -22,7 +22,12 @@
         Mobile Phone  <input type="number" name="mobile" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==10) return false;" required ><br>
        vehicle  <input type="text" name="vehicle_no" value="" placeholder="example-ka291234" required><br>
        Is regular?<input type="text" name="isregular" value="" placeholder="yes/no"><br>
-       <button type="submit" name="Submit">Add customer</button><br>
+       <button type="submit" name="Submit">Add customer</button><br><br><br><br>
+       <?php
+       echo '<a href="main.php">Go To Home?</a>';
+       ?>
+
+       
 </form>
 
 <?php

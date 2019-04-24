@@ -22,7 +22,10 @@
        zip code <input type="number" name="zip" value="" placeholder="example-587101" required><br>
        Address<input type="text" name="address" value="" placeholder=""><br>
        valet parking available?<input type="text" name="valet" placeholder="yes/no"><br>
-       <button type="submit" name="Submit">Add lot</button><br>
+       <button type="submit" name="Submit">Add lot</button><br><br><br><br><br>
+       <?php
+       echo '<a href="main.php">Go To Home?</a>';
+       ?>
 </form>
 
 <?php
