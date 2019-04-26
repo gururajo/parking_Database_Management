@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>customer details</title>
+    <title>parking lot details</title>
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="js/main.js">  </script>
     
@@ -21,14 +21,9 @@
                 die();
               }
           ?> 
-          <h3>customer  details</h3>
-         <form  action="custdetails.php" name="searchForm" method="get">
-           <input type="text" name="ph_no" value="" placeholder="mobile number" required>
-                     <button type="submit">Search</button>
-         </form>
-         <br><h1>OR</h1><br>
-         <form  action="custdetails2.php" name="searchForm" method="get">
-           <input type="text" name="vehicle_no" value="" placeholder="example=ka295104" required>
+          <h3>parking lot details</h3>
+         <form  action="parkinglotdetails.php" name="searchForm" method="get">
+           <input type="number" name="lot_id" value="" placeholder="lot id" required>
                      <button type="submit">Search</button>
          </form>
 
@@ -37,10 +32,10 @@
          require 'dbConnect.php';
          $conn=getConnection();
          $isgot=0;
-           if(isset($_GET['ph_no']))
+           if(isset($_GET['lot_id']))
          {
-           $phone_no=$_GET['ph_no'];
-         $sql = "SELECT * FROM customer where contact_no='$phone_no'" ;
+           $lot_id=$_GET['lot_id'];
+         $sql = "SELECT * FROM parking_lotss where lot_id='$lot_id'" ;
          $result = $conn->query($sql);
 
          if ($result->num_rows > 0) {
@@ -48,23 +43,23 @@
              $isgot=1;
              while($row = $result->fetch_assoc()) 
              {
-                 echo 'customer I.D=' .$row["cust_id"].'<br>Name='.$row['name'].'<br>Vehicle No=' .$row["vehicle_no"].'<br> Contact no='. $phone_no .'<br>E-Mail='.$row['email'].'<br>is regular customer?='.$row['is_regular_cust'].'<br> Registration Date'. $row["registration_date"].'<br>';
+                 echo 'Lot I.D=' .$row["lot_id"].'<br>no of floors='.$row['no_of_floors'].'<br>no of blocks=' .$row["no_of_blocks"].'<br> Address no='. $row['address'] .'<br>ZIP='.$row['zip'].'<br>';
                  
              }
             
          } else {
 
-             echo 'customer Not found';
+             echo 'lot Not found';
          }
        }
              
 if($isgot==1)
 {
- echo '<a href="custdetails.php">search for another customer?</a><br><a href="main.php">Go to Home</a>';
+ echo '<a href="parkinglotdetails.php">search for another lot?</a><br><a href="main.php">Go to Home</a>';
 }
 else
 {
-  echo '<h2>No customers<h2><br><a href="main.php">Go to Home</a>';
+  echo '<h2>No lots<h2><br><a href="main.php">Go to Home</a>';
 }
 ?>
 

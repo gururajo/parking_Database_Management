@@ -11,7 +11,7 @@
                 session_start();
                 
                 if(isset($_SESSION['username']))
-              echo "<h3 class='links' > Signed In as ".$_SESSION['username'].'<a href="login.php?logout=1">Log Out</a></h3>';
+                echo 'Signed In as '.$_SESSION['username'].'<a href="userlog.php?userid='.$_SESSION['userid'].'&type=logout">  Log Out</a>';
               else
               die ("not logged in, please log in!!!!<br> <a href=\"login.php\">login</a>");
           ?>
@@ -21,6 +21,7 @@
         customer Name  <input type="text" name="Name" value="" required><br>
         Mobile Phone  <input type="text" name="mobile"  required ><br>
        vehicle  <input type="text" name="vehicle_no" value="" placeholder="example-ka291234" required><br>
+       E-Mail   <input type="email" name="email" placeholder="you@example.com" required>
       <!-- Is regular?<input type="text" name="isregular" value="" placeholder="yes/no" required><br>  -->
        <button type="submit" name="Submit">Add customer</button><br><br><br><br>
        <?php
@@ -42,6 +43,7 @@ require 'dbConnect.php';
   $Name=$_POST['Name'];
   $ph_no=$_POST['mobile'];
   $vehicle_no=$_POST['vehicle_no'];
+  $email=$_POST['email'];
  // $isregular=$_POST['isregular'];
   $isWritten=false;
   $errorcode=-1;
@@ -49,10 +51,10 @@ require 'dbConnect.php';
 
   //echo $fName."<br>".$mName."<br>".$lName."<br>".$email."<br>".$password."<br>".$confirmPasss;
 
-if(!empty($Name)&&!empty($ph_no)&&!empty($vehicle_no))
+if(!empty($Name)&&!empty($ph_no)&&!empty($vehicle_no)&&!empty($email))
 {
-  $stmt = $conn->prepare("INSERT INTO customer (name,contact_no,vehicle_no) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $Name, $ph_no, $vehicle_no);
+  $stmt = $conn->prepare("INSERT INTO customer (name,contact_no,vehicle_no,email) VALUES (?, ?, ?,?)");
+  $stmt->bind_param("ssss", $Name, $ph_no, $vehicle_no,$email);
   //echo $Name.$ph_no.$vehicle_no.$isregular;
   if($stmt->execute())
   {

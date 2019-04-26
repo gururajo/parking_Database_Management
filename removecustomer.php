@@ -15,7 +15,7 @@
            <?php
                 session_start();
                 if(isset($_SESSION['username']))
-              echo "<h3 class='links' > Signed In as ".$_SESSION['username'].'<a href="login.php?logout=1">Log Out</a></h3>';
+                echo 'Signed In as '.$_SESSION['username'].'<a href="userlog.php?userid='.$_SESSION['userid'].'&type=logout">  Log Out</a>';
               else
               {
                 echo "not logged in, please log in!!!!<br> <a href=\"login.php\">login</a>";
@@ -27,6 +27,7 @@
            <input type="text" name="ph_no" value="" placeholder="mobile number" required>
                      <button type="submit">Search</button>
          </form>
+         <br><br><br><br><a href="main.php">Go To Home</a>
 
          <?php
 

@@ -11,7 +11,7 @@
                 session_start();
                 
                 if(isset($_SESSION['username']))
-              echo "<h3 class='links' > Signed In as ".$_SESSION['username'].'<a href="login.php?logout=1">Log Out</a></h3>';
+                echo 'Signed In as '.$_SESSION['username'].'<a href="userlog.php?userid='.$_SESSION['userid'].'&type=logout">  Log Out</a>';
               else
               die ("not logged in, please log in!!!!<br> <a href=\"login.php\">login</a>");
           ?>
@@ -41,7 +41,7 @@ require 'dbConnect.php';
          if(!empty($mobile_no))
          {
              echo("in 1 if");
-                  $sql = "select cust_id,vehicle_no from customer where contact_no='$mobile_no';" ;
+                  $sql = "select * from customer where contact_no='$mobile_no';" ;
          $result = $conn->query($sql);
            echo $result->num_rows;
          if ($result->num_rows > 0)
@@ -53,6 +53,7 @@ require 'dbConnect.php';
                  
                  $cust_id=$row['cust_id'];
                  $vehicle_no=$row['vehicle_no'];
+                 $email=$row['email'];
                  echo $cust_id."     ".$vehicle_no;
              }
             
@@ -149,7 +150,8 @@ if($_POST)
    while(!$isWritten);
    if($isWritten)
     {
-        echo "<h2 >Car Parked</h2><br><a href=\"main.php\">Take me to Home </a>";
+        echo "<h2 >Car Parked</h2><br>";
+        echo '<a href="send.php?email='.$email.'&lotid='.$lot_id.'&floorid='.$filledfloor.'&blockid='.$filledblock.'">SEND?</a><br><br><br><br><br><a href=\"main.php\">Take me to Home </a><br>';
        
     }
    else if($errorcode>0) {

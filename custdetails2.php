@@ -37,10 +37,10 @@
          require 'dbConnect.php';
          $conn=getConnection();
          $isgot=0;
-           if(isset($_GET['ph_no']))
+           if(isset($_GET['vehicle_no']))
          {
-           $phone_no=$_GET['ph_no'];
-         $sql = "SELECT * FROM customer where contact_no='$phone_no'" ;
+           $vehicle_no=$_GET['vehicle_no'];
+         $sql = "SELECT * FROM customer where vehicle_no='$vehicle_no'" ;
          $result = $conn->query($sql);
 
          if ($result->num_rows > 0) {
@@ -48,7 +48,7 @@
              $isgot=1;
              while($row = $result->fetch_assoc()) 
              {
-                 echo 'customer I.D=' .$row["cust_id"].'<br>Name='.$row['name'].'<br>Vehicle No=' .$row["vehicle_no"].'<br> Contact no='. $phone_no .'<br>E-Mail='.$row['email'].'<br>is regular customer?='.$row['is_regular_cust'].'<br> Registration Date'. $row["registration_date"].'<br>';
+                 echo 'customer I.D=' .$row["cust_id"].'<br>Name='.$row['name'].'<br>Vehicle No=' .$row["vehicle_no"].'<br> Contact no='. $row['contact_no'] .'<br>E-Mail='.$row['email'].'<br>is regular customer?='.$row['is_regular_cust'].'<br> Registration Date'. $row["registration_date"].'<br>';
                  
              }
             

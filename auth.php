@@ -24,6 +24,7 @@
              $gotEmail=$row["email"];
              $gotPassword=$row["password"];
              $gotName=$row["first_name"];
+             $user_id=$row['i_d'];
             if($gotPassword!=$password)
             {
               header("Location: login.php?status=&failed");
@@ -33,7 +34,7 @@
               $_SESSION['userName']=$gotName;
               $_SESSION['userEmail']=$gotEmail;*/
 
-              header("Location: authSucess.php?user=$gotName&useremail=$gotEmail");
+              header("Location: authSucess.php?user=$gotName&useremail=$gotEmail&userid=$user_id");
             }
         }
     } else {
