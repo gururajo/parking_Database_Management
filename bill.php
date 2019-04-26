@@ -46,29 +46,7 @@ $parkedtime=$startseconds- (time());
 $parkedtime=(int)(($parkedtime/3600)/36000)+1;
 //echo $parkedtime;
 
- // echo("hello  ".$_SESSION['username']);
-  
-  //echo $fName."<br>".$mName."<br>".$lName."<br>".$email."<br>".$password."<br>".$confirmPasss;
-
-/*  $stmt = $conn->prepare("INSERT INTO users (first_name, middle_name, last_name, ph_no, email, password) VALUES (?, ?, ? , ? , ? , ?)");
-  $stmt->bind_param("sssssi", $fName, $mName, $lName, $mobile, $email ,$password);
-  if($stmt->execute())
-  {
-       $isWritten=true;
-       $errorcode=100;
-  }else {
-    $isWritten=false;
-    $errorcode=100;
-
-  }
-
-
-}
-else {
-//echo "Am i joke to you";
-}
-
-*/
+ 
 ?>
 
 <!DOCTYPE html>
@@ -95,21 +73,44 @@ if(isset($_POST['car_type']))
     $penalty=$_POST['penalty'];
     
     
-         $isgot=0;
+         
          $sql = "SELECT * FROM price_scheme where vehicle_type_id='$car_type'" ;
          $result = $conn->query($sql);
 
          if ($result->num_rows > 0)
           {
              // output data of each row
-             $isgot=1;
+             
              while($row = $result->fetch_assoc()) 
              {
                  $base_price=$row['base_price_perhour'];
                  $totalprice=$base_price+$penalty;
                  echo '<h3>TOTOAL PRICE=  '.$totalprice.'</h3>';
-                echo '<a href="addreceipt.php?cust_id='.$_SESSION['cust_id'].'&baseprice='.$base_price.'&penalty='.$penalty.'">PAID?</a>';
+              
              }
+              $cust_id=$_SESSION['cust_id'];
+             $sql = "SELECT * FROM customer where cust_id='$cust_id'";
+         $result = $conn->query($sql);
+         $is_got=0;
+         if ($result->num_rows > 0)
+         {
+           $isgot=1;
+           while($row = $result->fetch_assoc()) 
+           {
+             $isregular=$row['is_regular_cust'];
+           }
+
+
+         }
+         if($isgot==1)
+         {
+           if($isregular=='no')
+             echo '<a href="addreceipt.php?cust_id='.$_SESSION['cust_id'].'&baseprice='.$base_price.'&penalty='.$penalty.'">PAID?</a>';
+           else
+           {
+            echo '<a href="addreceipt.php?cust_id='.$_SESSION['cust_id'].'&baseprice='.$base_price.'&penalty='.$penalty.'">DONE?</a>';
+           }
+
             }
             else {
 
@@ -120,6 +121,7 @@ if(isset($_POST['car_type']))
            
 
          }  
+        }
        
 
 

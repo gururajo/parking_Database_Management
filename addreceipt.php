@@ -26,7 +26,9 @@ die ("not set");
   {
        $isWritten=true;
        $errorcode=100;
-  }else {
+  }
+  else 
+  {
     $isWritten=false;
     $errorcode=100;
 

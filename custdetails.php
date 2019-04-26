@@ -43,7 +43,7 @@
              $isgot=1;
              while($row = $result->fetch_assoc()) 
              {
-                 echo 'customer I.D=' .$row["cust_id"].'<br>Name='.$row['name'].'<br>Vehicle No=' .$row["vehicle_no"].'<br> Contact no='. $phone_no .'<br> Registration Date'. $row["registration_date"].'<br>';
+                 echo 'customer I.D=' .$row["cust_id"].'<br>Name='.$row['name'].'<br>Vehicle No=' .$row["vehicle_no"].'<br> Contact no='. $phone_no .'<br>is regular customer?='.$row['is_regular_cust'].'<br> Registration Date'. $row["registration_date"].'<br>';
                  
              }
             

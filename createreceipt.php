@@ -24,8 +24,11 @@
           <h3>create receipt</h3>
          <form  action="createreceipt.php" name="searchForm" method="get">
            <input type="text" name="ph_no" value="" placeholder="mobile number" required>
-                     <button type="submit">Search</button>
+                     <button type="submit">create?</button>
          </form>
+         <?php
+       echo '<br><br><br><a href="main.php">Go To Home?</a>';
+       ?>
 
          <?php
 
@@ -73,7 +76,7 @@
              }
              else
               {
-                die ("<h2>No customer</h2><br><br><a href=\"createreceipt.php\">search for another customer?</a><br><a href=\"main.php\">Go to Home</a>");
+                die ("<h2>No customer</h2><br><br><a href=\"createreceipt.php\">another customer?</a>");
               }
              if($iscargot==1)
              {
@@ -81,14 +84,14 @@
                  echo '<a href="bill.php?cust_id='.$cust_id.'&start_time='.$parked_time.'"><br>click to bill</a><br><br><br><br><br>';
              }
              else{
-               die ("<h2>No car parked with customer id='.$cust_id.'</h2><br><br><a href=\"createreceipt.php\">search for another customer?</a><br><a href=\"main.php\">Go to Home</a>");
+               die ("<h2>No car parked with customer id='.$cust_id.'</h2><br><br><a href=\"createreceipt.php\">another customer?</a>");
              }
          
         }
              
 if($isgot==1)
 {
- echo '<a href="createreceipt.php">search for another customer?</a><br><a href="main.php">Go to Home</a>';
+ echo '<a href="createreceipt.php">another customer?</a>';
 }
 
 ?>

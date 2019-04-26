@@ -17,8 +17,10 @@
           <h1>parking management system</h1>
         <table>
         <h3><tr><a href="addcustomer.php">add customer</a></tr><br>
+        <tr><a href="addregularcustomer.php">add regular customer</a></tr><br>
         <tr><a href="custdetails.php">customer details</a></tr><br>
         <tr><a href="removecustomer.php">remove customer </a></tr><br>
+        <tr><a href="removeregularcustomer.php">remove regular customer </a></tr><br>
         <tr><a href="addparkinglot.php">add parking lot</a></tr><br>
         <tr><a href="newcarparked.php">new car parked?</a></tr><br>
         <tr><a href="createreceipt.php">car location</a></tr><br>

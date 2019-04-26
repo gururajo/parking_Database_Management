@@ -6,7 +6,7 @@
 <script type="text/javascript" src="js/main.js"> </script>
 </head>
 <body>
-<h1> ADD CUSTOMER</h1>
+<h1> ADD REGULAR CUSTOMER</h1>
 <?php
                 session_start();
                 
@@ -15,14 +15,13 @@
               else
               die ("not logged in, please log in!!!!<br> <a href=\"login.php\">login</a>");
           ?>
-<form name="addcust" action="addcustomer.php" method="post">
+<form name="addcust" action="addregularcustomer.php" method="post">
 
 
-        customer Name  <input type="text" name="Name" value="" required><br>
         Mobile Phone  <input type="text" name="mobile"  required ><br>
-       vehicle  <input type="text" name="vehicle_no" value="" placeholder="example-ka291234" required><br>
-      <!-- Is regular?<input type="text" name="isregular" value="" placeholder="yes/no" required><br>  -->
-       <button type="submit" name="Submit">Add customer</button><br><br><br><br>
+       duration  <input type="number" name="duration" value="" placeholder="in days" required><br>
+       
+       <button type="submit" name="Submit">Add regular customer</button><br><br><br><br>
        <?php
        echo '<a href="main.php">Go To Home?</a>';
        ?>
@@ -37,22 +36,33 @@ require 'dbConnect.php';
   {
   header("Location: signUp.php?status=&failed" );
   }
-  if($_POST)
+  if(isset($_POST['mobile'])&&isset($_POST['duration']))
   {
-  $Name=$_POST['Name'];
+  $duration=$_POST['duration'];
   $ph_no=$_POST['mobile'];
-  $vehicle_no=$_POST['vehicle_no'];
- // $isregular=$_POST['isregular'];
   $isWritten=false;
   $errorcode=-1;
+  $iscustgot=0;
+  $sql = "SELECT * FROM customer where contact_no='$ph_no'" ;
+         $result = $conn->query($sql);
 
+         if ($result->num_rows > 0) {
+             // output data of each row
+             $iscustgot=1;
+             while($row = $result->fetch_assoc()) 
+             {
+                $cust_id=$row["cust_id"];
+             }
+            
+         } else {
+
+             die("customer Not found<br><a href=\"addcustomer.php\">Add customer?</a>");
+         }
 
   //echo $fName."<br>".$mName."<br>".$lName."<br>".$email."<br>".$password."<br>".$confirmPasss;
 
-if(!empty($Name)&&!empty($ph_no)&&!empty($vehicle_no))
-{
-  $stmt = $conn->prepare("INSERT INTO customer (name,contact_no,vehicle_no) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $Name, $ph_no, $vehicle_no);
+  $stmt = $conn->prepare("INSERT INTO regularcust (cust_id,duration) VALUES (?, ?)");
+  $stmt->bind_param("si", $cust_id,$duration);
   //echo $Name.$ph_no.$vehicle_no.$isregular;
   if($stmt->execute())
   {
@@ -66,10 +76,7 @@ if(!empty($Name)&&!empty($ph_no)&&!empty($vehicle_no))
 
 
 }
-else {
-echo "No input";
-}
-  }
+
   
 
 
@@ -77,11 +84,22 @@ if($_POST)
 {
    if($isWritten)
     {
-        echo "<h2 >Customer Added</h2>";
+        $stmt = $conn->prepare("UPDATE customer SET is_regular_cust='yes' WHERE contact_no='$ph_no'");
+       if( $stmt->execute())
+       {
+           echo 'DONE';
+
+       }
+       else
+       {
+           echo 'customer is not updated';
+       }
+
+        echo "<h2 >Regular Customer ADDED </h2>";
        
     }else {
       echo "<h2 class='error'>Something went wrong please try later</h2>";
-      echo '<a href="main.php">Take me to Home </a>';
+     // echo '<a href="main.php">Take me to Home </a>';
 
     }
     if($errorcode<0)
