@@ -15,13 +15,13 @@
               else
               die ("not logged in, please log in!!!!<br> <a href=\"login.php\">login</a>");
           ?>
-<form name="addcust" action="addcustomer.php" method="post">
+      <form name="addcust" action="addcustomer.php" method="post">
 
 
         customer Name  <input type="text" name="Name" value="" required><br>
         Mobile Phone  <input type="text" name="mobile"  required ><br>
        vehicle  <input type="text" name="vehicle_no" value="" placeholder="example-ka291234" required><br>
-       E-Mail   <input type="email" name="email" placeholder="you@example.com" required>
+       E-Mail   <input type="email" name="email" placeholder="you@example.com" required><br>
       <!-- Is regular?<input type="text" name="isregular" value="" placeholder="yes/no" required><br>  -->
        <button type="submit" name="Submit">Add customer</button><br><br><br><br>
        <?php

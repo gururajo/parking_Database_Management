@@ -26,6 +26,7 @@
         <tr><a href="removecustomer.php">remove customer </a></tr><br>
         <tr><a href="removeregularcustomer.php">remove regular customer </a></tr><br>
         <tr><a href="createreceipt.php">create receipt?</a></tr><br>
+        <tr><a href="endregularcustomer.php">end regular customer</a></tr><br>
         </h3>
         <br><br><br><br><br>
         <?php
